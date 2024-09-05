@@ -1,0 +1,36 @@
+body {
+    background-color: brown;
+    margin: 0;
+    font-weight: bold;
+    font-size: 15px; 
+}
+
+.templateContent {
+    background-color: darkgoldenrod;
+    width: 250px;
+    width: 250px;
+    padding: 12px 24px;
+    border-radius: 24px;
+}
+
+#mainContent {
+    padding: 32px;
+}
+
+.imgDiv:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bookDiv {
+    background-image: url("../assets/icon/book.jpg");
+    background-position: center; 
+    background-size: cover;
+    width: 22vw; 
+    height: 220px; 
+}
+
+.price {
+    font-size: 42px; 
+    color: darkred;
+}
