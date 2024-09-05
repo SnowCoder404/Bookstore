@@ -21,7 +21,7 @@ function renderBooks(booksArray) {
                     <div class="d_flex_a_c flex_column">
                         <span>Kommentare :</span>
                         <div class="d_flex_a_c">                    
-                            <input placeholder="Schreibe dein Kommentar ..." style="border-radius: 18px;">
+                            <input placeholder="Schreibe dein Kommentar ..." style="border-radius: 18px; width: 208px; text-align: center;">
                             <button style="width: 30px; height: 20px; margin-left: 6px;border-radius: 8px;">
                             </button>
                         </div>
