@@ -15,10 +15,6 @@ function searchBooks() {
     }
 }
 
-function saveData(value) {
-    localStorage.setItem("Message", value);
-}
-
 function likeBook(liked) {
     // let picture = document.getElementById("");
     let likes = document.getElementById("likes");
