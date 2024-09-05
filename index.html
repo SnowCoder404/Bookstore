@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icon/book_logo.png">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/flexbox.css">
     <script src="./scripts/script.js"></script>
@@ -11,10 +12,14 @@
     <script src="./scripts/db.js"></script>
 </head>
 <body onload="searchBooks()">
-    <header style="background-color: rgba(0, 0, 0, 0.5); padding: 52px;">
-        <span style="color: darkred; font-size: 24px; gap: 12px; padding-right: 12px;">DA</span>
-        <span style="color: white; font-size: 24px">Bookstore - get your book here</span>
+    <header class="d_flex_a_c" style="background-color: rgba(0, 0, 0, 0.5); padding: 52px; gap: 24px;">
+        <img src="./assets/icon/book_logo.png" alt="logo" height="100px" width="100px">
+        <div>
+            <span style="color: darkred; font-size: 24px; padding-right: 6px;">DA</span>
+            <span style="color: white; font-size: 24px">Bookstore - get your book here</span>
+        </div>
     </header>
     <div id="mainContent" class="d_flex_a_c flex_column"></div>
+    <div></div>
 </body>
 </html>
