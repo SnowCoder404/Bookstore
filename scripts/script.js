@@ -15,11 +15,10 @@ function searchBooks() {
     }
 }
 
-function likeBook(liked) {
+function likeBook() {
     // let picture = document.getElementById("");
-    let likes = document.getElementById("likes");
-    if (!liked) {
-        likeNumber = books[0].likes + 1;
+    let likes = document.getElementsByClassName("likes");
+    for (let index = 0; index < books.length; index++) {
 
     }
 }

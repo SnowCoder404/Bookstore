@@ -9,7 +9,7 @@ function renderBooks(booksArray) {
                         <span class="price">${booksArray.price} €</span>
                         <div class="d_flex imgDiv" onclick="likeBook()" style="gap: 6px; margin: 12px;">
                             <img src="./assets/icon/heart.png" height=28px>
-                            <span class="d_flex_a_c" style="font-size: 17px;">${booksArray.likes}</span>
+                            <span class="d_flex_a_c likes" onclick="likeBook()" style="font-size: 17px;">${booksArray.likes}</span>
                         </div>
                     </div> 
                     <div class="d_flex_a_c" style="gap: 6px; margin: 12px; flex-direction: column;">
