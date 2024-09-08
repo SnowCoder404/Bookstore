@@ -8,10 +8,34 @@ function searchBooks() {
 }
 
 function likeOrNotLike(index) {
-    if (books[index].liked) {
-        contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+    let likeID = "like" + index;
+    let likeData = localStorage.getItem(likeID);
+    let likeDataInt = localStorage.getItem(likeID + "Int");
+    if (isNull(likeData)) {
+        if (books[index].liked) {
+            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+            console.log(books[index].liked)
+        }else {
+            contentRef.innerHTML += templateHTML(index, 'heart.png');
+        }
     }else {
-        contentRef.innerHTML += templateHTML(index, 'heart.png');
+        if (likeData == true) {
+            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+            document.getElementById(likeID).innerText = likeDataInt;
+        }else {
+            contentRef.innerHTML += templateHTML(index, 'heart.png');
+            document.getElementById(likeID).innerText = likeDataInt;
+        }
+    }
+}
+
+
+function isNull (value) {
+    if (value == null) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
@@ -19,7 +43,7 @@ function localStorageDataShow(index) {
     let commentID = "comment" + index;
     let comments = document.getElementById(commentID);
     localStorageData = localStorage.getItem(commentID); 
-    if (localStorageData == null) {
+    if (isNull(localStorageData)) {
         for (let i = 0; i < books[index].comments.length; i++) {
             comments.innerHTML += "<br>" +  books[index].comments[i].name + " : " + books[index].comments[i].comment + "<br>";
             localStorage.setItem(commentID, document.getElementById("comment0").innerHTML);
@@ -35,7 +59,7 @@ function likeBook(index) {
     let pictures = "heart" + index;
     let pictureID = document.getElementById(pictures);
     let bookLiked = books[index]; 
-    if (!bookLiked.liked) {
+    if (!books[index].liked) {
         likeInt = parseInt(likes.innerHTML) + 1;
         likes.innerText = likeInt;
         pictureID.src = "./assets/icon/heart-red.png"
@@ -46,6 +70,8 @@ function likeBook(index) {
         pictureID.src = "./assets/icon/heart.png";
         bookLiked.liked = false;
     }
+    localStorage.setItem(likeID, bookLiked.liked);
+    localStorage.setItem(likeID + "Int", likeInt);
 }
 
 function postComment(index) {
