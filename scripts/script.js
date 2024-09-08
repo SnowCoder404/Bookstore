@@ -2,22 +2,30 @@ function searchBooks() {
     contentRef = document.getElementById('mainContent');
     contentRef.innerHTML = ''; 
     for (let index = 0; index < books.length; index++) {
-        if (books[index].liked) {
-            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
-        }else {
-            contentRef.innerHTML += templateHTML(index, 'heart.png');
+        likeOrNotLike(index);
+        localStorageDataShow(index);
+    }
+}
+
+function likeOrNotLike(index) {
+    if (books[index].liked) {
+        contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+    }else {
+        contentRef.innerHTML += templateHTML(index, 'heart.png');
+    }
+}
+
+function localStorageDataShow(index) {
+    let commentID = "comment" + index;
+    let comments = document.getElementById(commentID);
+    localStorageData = localStorage.getItem(commentID); 
+    if (localStorageData == null) {
+        for (let i = 0; i < books[index].comments.length; i++) {
+            comments.innerHTML += "<br>" +  books[index].comments[i].name + " : " + books[index].comments[i].comment + "<br>";
+            localStorage.setItem(commentID, document.getElementById("comment0").innerHTML);
         }
-        let commentID = "comment" + index;
-        let comments = document.getElementById(commentID);
-        localStorageData = localStorage.getItem(commentID); 
-        if (localStorageData == null) {
-            for (let i = 0; i < books[index].comments.length; i++) {
-                comments.innerHTML += "<br>" +  books[index].comments[i].name + " : " + books[index].comments[i].comment + "<br>";
-                localStorage.setItem(commentID, document.getElementById("comment0").innerHTML);
-            }
-        }else {
-            comments.innerHTML += localStorageData;
-        }
+    }else {
+        comments.innerHTML += localStorageData;
     }
 }
 
