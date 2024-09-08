@@ -34,3 +34,7 @@ body {
     font-size: 42px; 
     color: darkred;
 }
+
+.commentGroup {
+    font-weight: normal;
+}

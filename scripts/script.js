@@ -7,7 +7,17 @@ function searchBooks() {
         }else {
             contentRef.innerHTML += templateHTML(index, 'heart.png');
         }
-        
+        let commentID = "comment" + index;
+        let comments = document.getElementById(commentID);
+        localStorageData = localStorage.getItem(commentID); 
+        if (localStorageData == null) {
+            for (let i = 0; i < books[index].comments.length; i++) {
+                comments.innerHTML += "<br>" +  books[index].comments[i].name + " : " + books[index].comments[i].comment + "<br>";
+                localStorage.setItem(commentID, document.getElementById("comment0").innerHTML);
+            }
+        }else {
+            comments.innerHTML += localStorageData;
+        }
     }
 }
 
@@ -35,6 +45,7 @@ function postComment(index) {
     let textInput = document.getElementById(textInputID);
     let commentID = "comment" + index;
     let comment = document.getElementById(commentID);
-    comment.innerHTML += '<br>' + textInput.value;
+    comment.innerHTML += '<br>' + "Gast : " + textInput.value ;
+    localStorage.setItem(commentID, comment.innerHTML);
     textInput.value = "";
 }

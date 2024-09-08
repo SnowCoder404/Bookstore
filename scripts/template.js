@@ -20,8 +20,8 @@ function templateHTML(index, heartID) {
                     <div style="height: 4px; width: 28vh; background-color: darkred; padding: 1px; margin: 8px;"></div> 
                     <div class="d_flex_a_c flex_column">
                         <span>Kommentare :</span>
-                        <div style="height: 170px;">
-                            <span id='comment${index}'></span>
+                        <div style="height: 600px;">
+                            <span id='comment${index}' class='commentGroup'></span>
                         </div>
                         <div class="d_flex_a_c">                    
                             <input id='text${index}' placeholder="Schreibe dein Kommentar ..." style="border-radius: 18px; width: 208px; text-align: center;">
