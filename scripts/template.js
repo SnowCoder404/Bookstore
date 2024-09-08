@@ -1,4 +1,4 @@
-function renderBooks(index, heartID) {
+function templateHTML(index, heartID) {
     return `<div style="padding-bottom: 24px;">
                 <div class="d_flex_a_c flex_column templateContent">
                     <span style="font-size: 16px;">${books[index].name}</span>
@@ -20,10 +20,12 @@ function renderBooks(index, heartID) {
                     <div style="height: 4px; width: 28vh; background-color: darkred; padding: 1px; margin: 8px;"></div> 
                     <div class="d_flex_a_c flex_column">
                         <span>Kommentare :</span>
-                        <div style="height: 170px;"></div>
+                        <div style="height: 170px;">
+                            <span id='comment${index}'></span>
+                        </div>
                         <div class="d_flex_a_c">                    
-                            <input placeholder="Schreibe dein Kommentar ..." style="border-radius: 18px; width: 208px; text-align: center;">
-                            <button style="width: 30px; height: 20px; margin-left: 6px;border-radius: 8px;">
+                            <input id='text${index}' placeholder="Schreibe dein Kommentar ..." style="border-radius: 18px; width: 208px; text-align: center;">
+                            <button onclick='postComment(${index})' style="width: 30px; height: 20px; margin-left: 6px;border-radius: 8px;">
                             </button>
                         </div>
                     </div>

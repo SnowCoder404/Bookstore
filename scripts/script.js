@@ -3,9 +3,9 @@ function searchBooks() {
     contentRef.innerHTML = ''; 
     for (let index = 0; index < books.length; index++) {
         if (books[index].liked) {
-            contentRef.innerHTML += renderBooks(index, 'heart-red.png');
+            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
         }else {
-            contentRef.innerHTML += renderBooks(index, 'heart.png');
+            contentRef.innerHTML += templateHTML(index, 'heart.png');
         }
         
     }
@@ -28,4 +28,13 @@ function likeBook(index) {
         pictureID.src = "./assets/icon/heart.png";
         bookLiked.liked = false;
     }
+}
+
+function postComment(index) {
+    let textInputID = "text" + index;
+    let textInput = document.getElementById(textInputID);
+    let commentID = "comment" + index;
+    let comment = document.getElementById(commentID);
+    comment.innerHTML += '<br>' + textInput.value;
+    textInput.value = "";
 }
