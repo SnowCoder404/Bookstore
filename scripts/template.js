@@ -1,21 +1,21 @@
-function renderBooks(booksArray) {
+function renderBooks(index, heartID) {
     return `<div style="padding-bottom: 24px;">
                 <div class="d_flex_a_c flex_column templateContent">
-                    <span style="font-size: 16px;">${booksArray.name}</span>
+                    <span style="font-size: 16px;">${books[index].name}</span>
                     <div style="height: 4px; width: 28vh; background-color: darkred; padding: 1px; margin: 8px;"></div>
                         <div class="bookDiv"></div>
                         <div style="height: 4px; width: 28vh; background-color: darkred; padding: 1px; margin: 8px;"></div> 
                         <div class="d_flex_a_c" style="width: 100%; justify-content: space-between;">
-                        <span class="price">${booksArray.price} €</span>
-                        <div class="d_flex imgDiv" onclick="likeBook()" style="gap: 6px; margin: 12px;">
-                            <img src="./assets/icon/heart.png" height=28px>
-                            <span class="d_flex_a_c likes" onclick="likeBook()" style="font-size: 17px;">${booksArray.likes}</span>
+                        <span class="price">${books[index].price.toFixed(2)} €</span>
+                        <div class="d_flex imgDiv" onclick="likeBook(${index})" style="gap: 6px; margin: 12px;">
+                            <img id ='heart${index}' src="./assets/icon/${heartID}" height=28px>
+                            <span id='like${index}' class="d_flex_a_c likes" onclick="likeBook()" style="font-size: 17px;">${books[index].likes}</span>
                         </div>
                     </div> 
                     <div class="d_flex_a_c" style="gap: 6px; margin: 12px; flex-direction: column;">
-                        <span>Author: ${booksArray.author}</span>
-                        <span>Genre: ${booksArray.genre}</span>
-                        <span>Erscheinungjahr: ${booksArray.year}</span>
+                        <span>Author: ${books[index].author}</span>
+                        <span>Genre: ${books[index].genre}</span>
+                        <span>Erscheinungjahr: ${books[index].publishedYear}</span>
                     </div>
                     <div style="height: 4px; width: 28vh; background-color: darkred; padding: 1px; margin: 8px;"></div> 
                     <div class="d_flex_a_c flex_column">
