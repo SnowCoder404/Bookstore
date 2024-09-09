@@ -15,14 +15,14 @@ function likeOrNotLike(index) {
         if (books[index].liked) {
             contentRef.innerHTML += templateHTML(index, 'heart-red.png');
             localStorage.setItem(likeID, true);
-            localStorage.setItem(likeID + "Int", document.getElementById(likeID).innerHTML);
+            localStorage.setItem(likeID + "Int", books[index].likes);
         }else {
             contentRef.innerHTML += templateHTML(index, 'heart.png');
             localStorage.setItem(likeID, false);
-            localStorage.setItem(likeID + "Int", document.getElementById(likeID).innerHTML);
+            localStorage.setItem(likeID + "Int", books[index].likes);
         }
     }else {
-        if (likeData == true) {
+        if (likeData == "true") {
             contentRef.innerHTML += templateHTML(index, 'heart-red.png');
             document.getElementById(likeID).innerText = likeDataInt;
         }else {
@@ -56,21 +56,26 @@ function localStorageDataShow(index) {
     }
 }
 
-// function likeBook(index) {
-//     let likeID = "like" + index;
-//     let likes = document.getElementById(likeID);
-//     let pictures = "heart" + index;
-//     let pictureID = document.getElementById(pictures);
-//     if (pictureID.src == "./assets/icon/heart-red.png") {
-//         likeInt = parseInt(likes.innerHTML) - 1;
-//         likes.innerText = likeInt;
-//         pictureID.src = "./assets/icon/heart.png";
-//     }else {
-//         likeInt = parseInt(likes.innerHTML) + 1;
-//         likes.innerText = likeInt;
-//         pictureID.src = "./assets/icon/heart-red.png"
-//         }
-// }     
+function likeBook(index) {
+    let likeID = "like" + index;
+    let localData = localStorage.getItem(likeID);
+    let likes = document.getElementById(likeID);
+    let pictures = "heart" + index;
+    let pictureID = document.getElementById(pictures);
+    if (localData == "true") {
+        likeInt = parseInt(likes.innerText) - 1;
+        likes.innerText = likeInt;
+        pictureID.src = "./assets/icon/heart.png";
+        localStorage.setItem(likeID, false);
+        localStorage.setItem(likeID + "Int", likeInt);
+    }else {
+        likeInt = parseInt(likes.innerText) + 1;
+        likes.innerText = likeInt;
+        pictureID.src = "./assets/icon/heart-red.png"
+        localStorage.setItem(likeID, true);
+        localStorage.setItem(likeID + "Int", likeInt);
+    }
+}     
 
 function postComment(index) {
     let textInputID = "text" + index;
