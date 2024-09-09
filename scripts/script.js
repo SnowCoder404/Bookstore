@@ -14,7 +14,6 @@ function likeOrNotLike(index) {
     if (isNull(likeData)) {
         if (books[index].liked) {
             contentRef.innerHTML += templateHTML(index, 'heart-red.png');
-            console.log(books[index].liked)
         }else {
             contentRef.innerHTML += templateHTML(index, 'heart.png');
         }
@@ -48,31 +47,46 @@ function localStorageDataShow(index) {
             comments.innerHTML += "<br>" +  books[index].comments[i].name + " : " + books[index].comments[i].comment + "<br>";
             localStorage.setItem(commentID, document.getElementById("comment0").innerHTML);
         }
-    }else {
+       }else {
         comments.innerHTML += localStorageData;
     }
 }
 
-function likeBook(index) {
-    let likeID = "like" + index;
-    let likes = document.getElementById(likeID);
-    let pictures = "heart" + index;
-    let pictureID = document.getElementById(pictures);
-    let bookLiked = books[index]; 
-    if (!books[index].liked) {
-        likeInt = parseInt(likes.innerHTML) + 1;
-        likes.innerText = likeInt;
-        pictureID.src = "./assets/icon/heart-red.png"
-        bookLiked.liked = true;
-    }else { 
-        likeInt = parseInt(likes.innerHTML) - 1;
-        likes.innerText = likeInt;
-        pictureID.src = "./assets/icon/heart.png";
-        bookLiked.liked = false;
-    }
-    localStorage.setItem(likeID, bookLiked.liked);
-    localStorage.setItem(likeID + "Int", likeInt);
-}
+// function likeBook(index) {
+//      let likeID = "like" + index;
+//      let likes = document.getElementById(likeID);
+//      let pictures = "heart" + index;
+//      let pictureID = document.getElementById(pictures);
+//      let bookLiked = books[index]; 
+//      let localData =  localStorage.setItem(likeID, bookLiked.liked);
+//      if (isNull(localData)) {
+//         if (books[index].liked) {
+//             likeInt = parseInt(likes.innerHTML) - 1;
+//             likes.innerText = likeInt;
+//             pictureID.src = "./assets/icon/heart.png";
+//             bookLiked.liked = false;
+//         }else {
+//             likeInt = parseInt(likes.innerHTML) + 1;
+//             likes.innerText = likeInt;
+//             pictureID.src = "./assets/icon/heart-red.png"
+//             bookLiked.liked = true;      
+//         }
+//     }else {
+//         if (localData) {
+//             likeInt = parseInt(likes.innerHTML) - 1;
+//             likes.innerText = likeInt;
+//             pictureID.src = "./assets/icon/heart.png";
+//             bookLiked.liked = false;      
+//         }else {
+//             likeInt = parseInt(likes.innerHTML) + 1;
+//             likes.innerText = likeInt;
+//             pictureID.src = "./assets/icon/heart-red.png"
+//             bookLiked.liked = true;
+            
+//         }
+//     }
+//      localStorage.setItem(likeID + "Int", likeInt);
+//  }
 
 function postComment(index) {
     let textInputID = "text" + index;
