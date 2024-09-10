@@ -10,11 +10,10 @@ function searchBooks() {
 function likeOrNotLike(index) {
     let likeId = "like" + index;
     let likeData = localStorage.getItem(likeId);
-    let likeDataInt = localStorage.getItem(likeId + "Int");
     if (isNull(likeData)) {
         isBookLiked(index);
     }else {
-        isStorageBookLiked(index, likeId);
+        isStorageBookLiked(index, likeId, likeData);
     }
 }
 
@@ -30,7 +29,8 @@ function isBookLiked(index) {
     }
 } 
 
-function isStorageBookLiked(index, likeId) {
+function isStorageBookLiked(index, likeId, likeData) {
+    let likeDataInt = localStorage.getItem(likeId + "Int");
     if (likeData == "true") {
         contentRef.innerHTML += templateHTML(index, 'heart-red.png');
         document.getElementById(likeId).innerText = likeDataInt;
