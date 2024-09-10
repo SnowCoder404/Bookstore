@@ -8,30 +8,37 @@ function searchBooks() {
 }
 
 function likeOrNotLike(index) {
-    let likeID = "like" + index;
-    let likeData = localStorage.getItem(likeID);
-    let likeDataInt = localStorage.getItem(likeID + "Int");
+    let likeId = "like" + index;
+    let likeData = localStorage.getItem(likeId);
+    let likeDataInt = localStorage.getItem(likeId + "Int");
     if (isNull(likeData)) {
-        if (books[index].liked) {
-            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
-            localStorage.setItem(likeID, true);
-            localStorage.setItem(likeID + "Int", books[index].likes);
-        }else {
-            contentRef.innerHTML += templateHTML(index, 'heart.png');
-            localStorage.setItem(likeID, false);
-            localStorage.setItem(likeID + "Int", books[index].likes);
-        }
+        isBookLiked(index);
     }else {
-        if (likeData == "true") {
-            contentRef.innerHTML += templateHTML(index, 'heart-red.png');
-            document.getElementById(likeID).innerText = likeDataInt;
-        }else {
-            contentRef.innerHTML += templateHTML(index, 'heart.png');
-            document.getElementById(likeID).innerText = likeDataInt;
-        }
+        isStorageBookLiked(index, likeId);
     }
 }
 
+function isBookLiked(index) {
+    if (books[index].liked) {
+        contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+        localStorage.setItem(likeId, true);
+        localStorage.setItem(likeId + "Int", books[index].likes);
+    }else {
+        contentRef.innerHTML += templateHTML(index, 'heart.png');
+        localStorage.setItem(likeId, false);
+        localStorage.setItem(likeId + "Int", books[index].likes);
+    }
+} 
+
+function isStorageBookLiked(index, likeId) {
+    if (likeData == "true") {
+        contentRef.innerHTML += templateHTML(index, 'heart-red.png');
+        document.getElementById(likeId).innerText = likeDataInt;
+    }else {
+        contentRef.innerHTML += templateHTML(index, 'heart.png');
+        document.getElementById(likeId).innerText = likeDataInt;
+    }
+}
 
 function isNull (value) {
     if (value == null) {
@@ -57,25 +64,29 @@ function localStorageDataShow(index) {
 }
 
 function likeBook(index) {
-    let likeID = "like" + index;
-    let localData = localStorage.getItem(likeID);
-    let likes = document.getElementById(likeID);
+    let likeId = "like" + index;
+    let localData = localStorage.getItem(likeId);
+    let likes = document.getElementById(likeId);
     let pictures = "heart" + index;
     let pictureID = document.getElementById(pictures);
+    isLocalDataTrue(localData, likes, pictureID);
+}     
+
+function isLocalDataTrue(localData, likes, pictureID) {
     if (localData == "true") {
         likeInt = parseInt(likes.innerText) - 1;
         likes.innerText = likeInt;
         pictureID.src = "./assets/icon/heart.png";
-        localStorage.setItem(likeID, false);
-        localStorage.setItem(likeID + "Int", likeInt);
+        localStorage.setItem(likeId, false);
+        localStorage.setItem(likeId + "Int", likeInt);
     }else {
         likeInt = parseInt(likes.innerText) + 1;
         likes.innerText = likeInt;
         pictureID.src = "./assets/icon/heart-red.png"
-        localStorage.setItem(likeID, true);
-        localStorage.setItem(likeID + "Int", likeInt);
+        localStorage.setItem(likeId, true);
+        localStorage.setItem(likeId + "Int", likeInt);
     }
-}     
+} 
 
 function postComment(index) {
     let textInputID = "text" + index;
