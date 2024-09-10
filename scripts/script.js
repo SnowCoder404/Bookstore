@@ -69,10 +69,10 @@ function likeBook(index) {
     let likes = document.getElementById(likeId);
     let pictures = "heart" + index;
     let pictureID = document.getElementById(pictures);
-    isLocalDataTrue(localData, likes, pictureID);
+    isLocalDataTrue(localData, likes, pictureID, likeId);
 }     
 
-function isLocalDataTrue(localData, likes, pictureID) {
+function isLocalDataTrue(localData, likes, pictureID, likeId) {
     if (localData == "true") {
         likeInt = parseInt(likes.innerText) - 1;
         likes.innerText = likeInt;
