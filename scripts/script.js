@@ -11,7 +11,7 @@ function likeOrNotLike(index) {
     let likeId = "like" + index;
     let likeData = localStorage.getItem(likeId);
     if (isNull(likeData)) {
-        isBookLiked(index);
+        isBookLiked(index, likeId);
     }else {
         isStorageBookLiked(index, likeId, likeData);
     }
